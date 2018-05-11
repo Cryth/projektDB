@@ -14,7 +14,7 @@ class osoby_model extends CI_Model
             return $query->result_array();
         }
 
-        $query = $this->db->get_where('osoby', array('idOsoby' => $id));
+        $query = $this->db->where('idOsoby', $id)->get('osoby');
         return $query->row_array();
     }
 
@@ -44,6 +44,24 @@ class osoby_model extends CI_Model
              $this->db->where('absolkurzy.idKurz', $id);
              $query = $this->db->get();
              return $query->result_array();
+        }
+    }
+
+    public function get_lektor($id){
+        if(!empty($id)){
+            $this->db->select('Meno, Priezvisko, Email');
+            $this->db->from('lektori');
+            $this->db->join('kurz', 'lektori.idlektori = kurz.idLektori');
+            $this->db->where('kurz.idKurz', $id);
+            $query = $this->db->get();
+            return $query->row_array();
+        }
+    }
+
+    public function update_osoba($data, $id){
+        if(!empty($id)){
+            $this->db->where('idOsoby', $id);
+            $this->db->update('osoby', $data);
         }
     }
 

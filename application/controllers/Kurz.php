@@ -64,6 +64,8 @@ class Kurz extends CI_Controller
         if ($this->kurz_model->ma_kurz($id)){
             $data['kurz'] = $this->kurz_model->get_kurz($id);
             $data['osobyvkurze'] = $this->osoby_model->get_zucastneni($id);
+            $data['lektor'] = $this->osoby_model->get_lektor($id);
+
             $this->load->view('template/header');
             $this->load->view('template/navbar');
             $this->load->view('kurz/vypis_kurz', $data);

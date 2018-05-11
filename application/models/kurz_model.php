@@ -55,6 +55,8 @@ class kurz_model extends CI_Model
 
     }
 
+
+
     public function ma_kurz($idk){
         $ido = $this->session->userdata('idecko');
         $query = $this->db->select('idAbsolKurz')->where('idKurz', $idk)->where('idOsoby', $ido)->get('absolkurzy');

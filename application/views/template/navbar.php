@@ -18,7 +18,7 @@
                 <a class="nav-link" href="<?php echo base_url().'logout' ?>">Odhlásenie</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" > <?php echo $this->session->userdata('idecko').' '.$this->session->userdata('Meno').' '.$this->session->userdata('Priezvisko');?></a>
+                <a class="nav-link" href="<?php echo base_url().'osoby/zobrazprofil' ?>"> <?php echo 'Prihlásený ako: '.$this->session->userdata('Meno').' '.$this->session->userdata('Priezvisko');?></a>
             </li>
         </ul>
     </div>

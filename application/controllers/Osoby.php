@@ -40,5 +40,30 @@ class Osoby extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function zobrazprofil(){
+        $id = $this->session->userdata('idecko');
+        if(empty($id)){
+            show_404();
+        }
+        $data['osoba'] = $this->osoby_model->get_osoby($id);
+
+        $this->load->view('template/header');
+        $this->load->view('template/navbar');
+        $this->load->view('osoby/mojprofil', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function updateprofil(){
+        $id = $this->session->userdata('idecko');
+        if(empty($id)){
+            show_404();
+        }
+        $data = array(
+            'Email' => $_POST['email'],
+            'TelKontakt' => $_POST['telkontakt']
+        );
+        $this->osoby_model->update_osoba($data, $id);
+        //redirect('Home');
+    }
 
 }
