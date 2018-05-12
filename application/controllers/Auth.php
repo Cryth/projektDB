@@ -12,6 +12,7 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->model('auth_model');
+        $this->load->model('oblasti_model');
     }
 
     function register(){
@@ -41,15 +42,19 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Heslo', 'trim|required|min_length[6]');
 
         if ($this->form_validation->run() && $this->auth_model->check()){
-            if($this->auth_model->register()){
-                redirect('Home');
+            if($this->auth_model->registerlektor()){
+                redirect('registerlektor');
             }else{
                 echo validation_errors();
             }
         }else{
             echo validation_errors();
         }
-        $this->load->view('lektorregister_view');
+        $data['oblasti'] = $this->oblasti_model->get_oblasti();
+        $this->load->view('template/header');
+        $this->load->view('template/navbar');
+        $this->load->view('lektorregister_view', $data);
+        $this->load->view('template/footer');
     }
 
 

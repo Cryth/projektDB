@@ -26,6 +26,7 @@ class auth_model extends CI_Model
             'Meno' => $_POST['meno'],
             'Priezvisko' => $_POST['priezvisko'],
             'Email' => $_POST['email'],
+            'idOblast' => $_POST['oblast'],
             'login' => $_POST['login'],
             'password' => sha1($_POST['password']),
         );
@@ -35,7 +36,7 @@ class auth_model extends CI_Model
 
     function check(){
         $lectoris = $this->db->where('login', $_POST['login'])
-                        ->where('password', $_POST['password'])
+                        ->where('password', sha1($_POST['password']))
                         ->get('lektori');
         $osobys = $this->db->where('login', $_POST['login'])
                             ->where('password', sha1($_POST['password']))
@@ -50,7 +51,7 @@ class auth_model extends CI_Model
 
     function checklektor(){
         $lectoris = $this->db->where('login', $_POST['login'])
-            ->where('password', $_POST['password'])
+            ->where('password', sha1($_POST['password']))
             ->get('lektori');
         if($lectoris->num_rows()) return true;
         else return false;
