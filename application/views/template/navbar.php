@@ -14,6 +14,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url().'kurz' ?>">Všetky kurzy</a>
             </li>
+            <?php if ($this->session->userdata('lektor')){?>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url().'kurz/spravakurzov';?>">Správa kurzov</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url().'auth/registerlektor'; ?>">Registrácia lektora</a>
+            </li>
+            <?php }?>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url().'logout' ?>">Odhlásenie</a>
             </li>

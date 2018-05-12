@@ -53,5 +53,6 @@ $route['default_controller'] = 'auth/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['register'] = 'auth/register';
+$route['update'] = 'osoby/updateprofil';
 $route['login'] = 'auth/login';
 $route['logout'] = 'auth/logout';

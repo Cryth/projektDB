@@ -33,9 +33,29 @@ class Auth extends CI_Controller
         $this->load->view('register_view');
     }
 
-    function login(){
+    function registerlektor(){
+        $this->form_validation->set_rules('meno', 'Meno', 'trim|required');
+        $this->form_validation->set_rules('priezvisko', 'Priezvisko', 'trim|required');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('login', 'Login', 'trim|required');
         $this->form_validation->set_rules('password', 'Heslo', 'trim|required|min_length[6]');
+
+        if ($this->form_validation->run() && $this->auth_model->check()){
+            if($this->auth_model->register()){
+                redirect('Home');
+            }else{
+                echo validation_errors();
+            }
+        }else{
+            echo validation_errors();
+        }
+        $this->load->view('lektorregister_view');
+    }
+
+
+    function login(){
+        $this->form_validation->set_rules('login', 'Login', 'trim|required');
+        $this->form_validation->set_rules('password', 'Heslo', 'trim|required');
 
         if ($this->form_validation->run()){
             if (!$this->auth_model->check()){

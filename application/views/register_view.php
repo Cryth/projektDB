@@ -26,35 +26,47 @@ and open the template in the editor.
     </style>
 </head>
 <body style="background-image:url(background.jpg); max-width: 100%; height: auto">
-<div class="container text-center">
-    <h3>Registrácia</h3>
-</div>
-<div class="row text-center">
-    <div class="col-sm"></div>
-    <div style="background-color: rgba(0, 0, 0, 0.3)" class="col-sm jumbotron">
-        <form method="post" action="register" accept-charset="UTF-8">
-            <h3>Meno</h3>
-            <input type="text" class="form-control" name="meno" pattern="(*[a-z])(?=.*[A-Z])" required>
-            <br>
-            <h3>Priezvisko</h3>
-            <input type="text" class="form-control" name="priezvisko" maxlength="45" pattern="(*[a-z])(?=.*[A-Z])" required>
-            <br>
-            <h3>Email</h3>
-            <input type="email" class="form-control" name="email" maxlength="45" required>
-            <br>
-            <h3>Login</h3>
-            <input type="text" class="form-control" name="login" maxlength="45" required>
-            <br>
-            <h3>Heslo</h3>
-            <input type="password" class="form-control" name="password" maxlength="45" required>
-            <br>
-            <h3>Tel. Kontakt</h3>
-            <input type="text" class="form-control" name="telkontakt" maxlength="45" >
-            <br>
-            <input type="submit" class="btn btn-primary btn-lg" style="cursor: pointer;" value="Zaregistrovať" name="tlacidlo">
-        </form>
+<br><br>
+
+<div class="col-md-6 offset-md-3">
+    <div class="card card-outline-secondary">
+        <div class="card-header">
+            <h3 class="mb-0">Registrácia</h3>
+        </div>
+        <div class="card-body">
+            <form class="form" role="form" method="post" action="register" accept-charset="UTF-8">
+                <div class="form-group">
+                    <label for="meno">Meno</label>
+                    <input type="text" class="form-control" name="meno" id="meno" placeholder="Krstné meno" required>
+                </div>
+                <div class="form-group">
+                    <label for="priezvisko">Priezvisko</label>
+                    <input type="text" class="form-control" name="priezvisko" id="priezvisko" placeholder="Priezvisko" required>
+                </div>
+                <div class="form-group">
+                    <label for="telkontakt">TelKontakt</label>
+                    <input type="email" class="form-control" name="telkontakt" id="telkontakt" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login">Login</label>
+                    <input type="text" class="form-control" name="login" id="login" placeholder="Prihlasovacie meno" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Heslo</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Heslo" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg float-right">Register</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="col-sm"></div>
 </div>
+
 </body>
 </html>

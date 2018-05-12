@@ -59,11 +59,11 @@ class Osoby extends CI_Controller
             show_404();
         }
         $data = array(
-            'Email' => $_POST['email'],
-            'TelKontakt' => $_POST['telkontakt']
+            'Email' => $_REQUEST['email'],
+            'TelKontakt' => $_REQUEST['telkontakt']
         );
         $this->osoby_model->update_osoba($data, $id);
-        //redirect('Home');
+        redirect('osoby/zobrazprofil');
     }
 
 }
