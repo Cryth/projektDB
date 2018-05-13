@@ -55,6 +55,25 @@ class Kurz extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function spravakurzov(){
+        $id = $this->session->userdata('idecko');
+        $data['kurzysprava'] = $this->kurz_model->spravakurzov($id);
+        if (empty($data['kurzysprava'])){
+            redirect('Home');
+        }
+        $this->load->view('template/header');
+        $this->load->view('template/navbar');
+        $this->load->view('kurz/spravakurzov', $data);
+        $this->load->view('template/footer');
+
+    }
+
+    public function zmaz_kurz(){
+        $id = $this->uri->segment(3);
+        $this->kurz_model->delete_kurz($id);
+        $this->spravakurzov();
+    }
+
     public function zobraz_kurz(){
         $id = $this->uri->segment(3);
         if(empty($id)){
@@ -78,7 +97,32 @@ class Kurz extends CI_Controller
             //stranka na prihlasenie tu
             $this->load->view('template/footer');
         }
+    }
 
+    public function show_kurz(){
+        $id = $this->uri->segment(3);
+        if(empty($id)){
+            show_404();
+        }
+        $data['kurz'] = $this->kurz_model->get_kurz($id);
+        $this->load->view('template/header');
+        $this->load->view('template/navbar');
+        $this->load->view('kurz/editkurz', $data);
+        $this->load->view('template/footer');
+    }
 
+    public function update_kurz(){
+        $id = $_POST['idecko'];
+        if(empty($id)){
+            show_404();
+        }
+        $data = array(
+            'Nazov' => $_POST['nazov'],
+            'Popis' => $_POST['popis'],
+            'DatumOd' => $_POST['datumod'],
+            'DatumDo' => $_POST['datumdo']
+        );
+        $this->kurz_model->update_kurz($id, $data);
+        redirect('kurz/show_kurz/'.$id);
     }
 }

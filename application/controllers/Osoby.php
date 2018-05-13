@@ -33,6 +33,7 @@ class Osoby extends CI_Controller
         }
 
         $data['osobyvkurze'] = $this->osoby_model->get_zucastneni($id);
+        $data['idkurz'] = $id;
 
         $this->load->view('template/header');
         $this->load->view('template/navbar');

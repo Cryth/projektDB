@@ -43,6 +43,12 @@ class kurz_model extends CI_Model
         }
     }
 
+    public function spravakurzov($id){
+        if (empty($id)) return null;
+        $this->db->where('idLektori', $id);
+        return $this->db->get('kurz')->result_array();
+    }
+
     public function mojekurzy(){
         $data = array();
         $id = $this->session->userdata('idecko');
@@ -67,7 +73,17 @@ class kurz_model extends CI_Model
         }
     }
 
+    public function update_kurz($id, $data){
+        if(!empty($id)){
+            $this->db->where('idKurz', $id);
+            $this->db->update('kurz', $data);
+        }
+    }
+
     public function delete_kurz($id){
+        $this->db->where('idKurz', $id);
+        $this->db->delete('absolkurzy');
+
         $this->db->where('idKurz', $id);
         return $this->db->delete('kurz');
     }
