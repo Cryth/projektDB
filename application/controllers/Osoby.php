@@ -14,12 +14,12 @@ class Osoby extends CI_Controller
         if (!$this->session->userdata('logged_in')){
             redirect('login');
         }
-        $this->load->model('osoby_model');
+        $this->load->model('Osoby_model');
         $this->load->helper('url_helper');
     }
 
     public function index(){
-        $data['osobyvkurze'] = $this->osoby_model->get_zucastneni();
+        $data['osobyvkurze'] = $this->Osoby_model->get_zucastneni();
 
         $this->load->view('template/header');
         $this->load->view('osoby/index', $data);
@@ -32,7 +32,7 @@ class Osoby extends CI_Controller
             show_404();
         }
 
-        $data['osobyvkurze'] = $this->osoby_model->get_zucastneni($id);
+        $data['osobyvkurze'] = $this->Osoby_model->get_zucastneni($id);
         $data['idkurz'] = $id;
 
         $this->load->view('template/header');
@@ -46,7 +46,7 @@ class Osoby extends CI_Controller
         if(empty($id)){
             show_404();
         }
-        $data['osoba'] = $this->osoby_model->get_osoby($id);
+        $data['osoba'] = $this->Osoby_model->get_osoby($id);
 
         $this->load->view('template/header');
         $this->load->view('template/navbar');
@@ -60,10 +60,12 @@ class Osoby extends CI_Controller
             show_404();
         }
         $data = array(
+            'Meno' => $_REQUEST['meno'],
+            'Priezvisko' => $_REQUEST['priezvisko'],
             'Email' => $_REQUEST['email'],
             'TelKontakt' => $_REQUEST['telkontakt']
         );
-        $this->osoby_model->update_osoba($data, $id);
+        $this->Osoby_model->update_osoba($data, $id);
         redirect('osoby/zobrazprofil');
     }
 

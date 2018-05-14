@@ -6,7 +6,7 @@
  * Time: 14:10
  */
 
-class dochadzka_model extends CI_Model
+class Dochadzka_model extends CI_Model
 {
     public function get_dochadzka($id = FALSE){
         if($id === FALSE){

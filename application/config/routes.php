@@ -55,6 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route['register'] = 'auth/register';
 $route['registerlektor'] = 'auth/registerlektor';
 $route['updateprofil'] = 'osoby/updateprofil';
-$route['updatekurz'] = 'kurz/update_kurz';
 $route['login'] = 'auth/login';
 $route['logout'] = 'auth/logout';

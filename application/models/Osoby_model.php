@@ -6,7 +6,7 @@
  * Time: 13:04
  */
 
-class osoby_model extends CI_Model
+class Osoby_model extends CI_Model
 {
     public function get_osoby($id = FALSE){
         if($id === FALSE){

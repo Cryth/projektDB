@@ -6,7 +6,7 @@
  * Time: 13:48
  */
 
-class oblasti_model extends CI_Model
+class Oblasti_model extends CI_Model
 {
     public function get_oblasti($id = FALSE){
         if($id === FALSE){

@@ -11,8 +11,8 @@ class Auth extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('auth_model');
-        $this->load->model('oblasti_model');
+        $this->load->model('Auth_model');
+        $this->load->model('Oblasti_model');
     }
 
     function register(){
@@ -22,8 +22,8 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('login', 'Login', 'trim|required');
         $this->form_validation->set_rules('password', 'Heslo', 'trim|required|min_length[6]');
 
-        if ($this->form_validation->run() && $this->auth_model->check()){
-            if($this->auth_model->register()){
+        if ($this->form_validation->run() && $this->Auth_model->check()){
+            if($this->Auth_model->register()){
                 redirect('login');
             }else{
                 echo validation_errors();
@@ -41,8 +41,8 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('login', 'Login', 'trim|required');
         $this->form_validation->set_rules('password', 'Heslo', 'trim|required|min_length[6]');
 
-        if ($this->form_validation->run() && $this->auth_model->check()){
-            if($this->auth_model->registerlektor()){
+        if ($this->form_validation->run() && $this->Auth_model->check()){
+            if($this->Auth_model->registerlektor()){
                 redirect('registerlektor');
             }else{
                 echo validation_errors();
@@ -50,7 +50,7 @@ class Auth extends CI_Controller
         }else{
             echo validation_errors();
         }
-        $data['oblasti'] = $this->oblasti_model->get_oblasti();
+        $data['oblasti'] = $this->Oblasti_model->get_oblasti();
         $this->load->view('template/header');
         $this->load->view('template/navbar');
         $this->load->view('lektorregister_view', $data);
@@ -63,20 +63,20 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Heslo', 'trim|required');
 
         if ($this->form_validation->run()){
-            if (!$this->auth_model->check()){
+            if (!$this->Auth_model->check()){
                 //vytvorime session
-                if($this->auth_model->checklektor()){
+                if($this->Auth_model->checklektor()){
 
-                    $data = $this->auth_model->getUserData($_POST['login'], 'lektori');
+                    $data = $this->Auth_model->getUserData($_POST['login'], 'lektori');
                     $data['lektor'] = true;
                     $data['logged_in'] = true;
 
                     $this->session->set_userdata($data);
                     redirect('Home');
 
-                }elseif ($this->auth_model->checkosoba()){
+                }elseif ($this->Auth_model->checkosoba()){
 
-                    $data = $this->auth_model->getUserData($_POST['login'], 'osoby');
+                    $data = $this->Auth_model->getUserData($_POST['login'], 'osoby');
                     $data['lektor'] = false;
                     $data['logged_in'] = true;
 

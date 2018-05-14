@@ -6,7 +6,7 @@
  * Time: 13:53
  */
 
-class kurz_model extends CI_Model
+class Kurz_model extends CI_Model
 {
     public function get_kurz($id = FALSE){
         if($id === FALSE){
@@ -52,15 +52,51 @@ class kurz_model extends CI_Model
     public function mojekurzy(){
         $data = array();
         $id = $this->session->userdata('idecko');
-        $idkurzov = $this->db->select('idKurz')->where('idOsoby', $id)->get('absolkurzy')->result_array();
-        foreach ($idkurzov as $kurz){
-            $prvok = $this->db->select('*')->where('idKurz', $kurz['idKurz'])->get('kurz')->row_array();
-            array_push($data, $prvok);
-        };
-        return $data;
+        if (!$this->session->userdata('lektor')){
+            $idkurzov = $this->db->select('idKurz')->where('idOsoby', $id)->get('absolkurzy')->result_array();
+            foreach ($idkurzov as $kurz){
+                $prvok = $this->db->select('*')->where('idKurz', $kurz['idKurz'])->get('kurz')->row_array();
+                array_push($data, $prvok);
+            };
+            return $data;
+        }elseif ($this->session->userdata('lektor')){
+            $idkurzov = $this->db->select('idKurz')->where('idLektori', $id)->get('kurz')->result_array();
+            foreach ($idkurzov as $kurz){
+                $prvok = $this->db->select('*')->where('idKurz', $kurz['idKurz'])->get('kurz')->row_array();
+                array_push($data, $prvok);
+            };
+            return $data;
+        }
+        return null;
 
     }
 
+
+    public function insert_kurz($data){
+        if(!empty($data)){
+            return $this->db->insert('kurz', $data);
+        }
+        return null;
+    }
+
+    public function prihlaskurz($ido, $idk){
+        if(!empty($ido) && !empty($idk)){
+            $data = array(
+                'idOsoby' => $ido,
+                'idKurz' => $idk
+            );
+            return $this->db->insert('absolkurzy', $data);
+        }
+        return null;
+    }
+
+    public function odhlaskurz($ido, $idk){
+        if(!empty($ido) && !empty($idk)){
+            $this->db->where('idKurz', $idk)->where('idOsoby', $ido)->delete('absolkurzy');
+            return ;
+        }
+        return null;
+    }
 
 
     public function ma_kurz($idk){

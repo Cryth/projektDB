@@ -6,7 +6,7 @@
         <div class="row">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <a style="color: #f9f9f9" href="<?php echo base_url('Home')?>" class="btn btn-primary">Pridaj Kurz</a>
+                    <a style="color: #f9f9f9" href="<?php echo base_url().'kurz/pridanie';?>" class="btn btn-primary">Pridaj Kurz</a>
                 </div>
                 <div class="panel-body">
 
@@ -24,7 +24,7 @@
                             <?php if(!empty($kurzysprava)): foreach($kurzysprava as $kurz): ?>
                                 <tr>
                                     <td><?php echo $kurz['Nazov']; ?></td>
-                                    <td><?php echo substr($kurz['Popis'],0,30); ?></td>
+                                    <td data-toggle="tooltip" title="<?php echo $kurz['Popis']; ?>" ><?php echo substr($kurz['Popis'],0,30); ?></td>
                                     <td><?php echo $kurz['DatumOd']; ?></td>
                                     <td><?php echo $kurz['DatumDo']; ?></td>
                                     <td>

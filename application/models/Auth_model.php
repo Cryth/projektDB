@@ -6,7 +6,7 @@
  * Time: 12:03
  */
 
-class auth_model extends CI_Model
+class Auth_model extends CI_Model
 {
     function register(){
         $data = array(
@@ -65,7 +65,7 @@ class auth_model extends CI_Model
     }
 
     function getUserData($login, $datab){
-        if($datab == 'lektori') $id = 'idLektori as idecko, ';
+        if($datab == 'lektori') $id = 'idLektori as idecko, idOblast as oblast, ';
         elseif($datab == 'osoby') $id = 'idOsoby as idecko, ';
         $select = $this->db->select($id.'Meno, Priezvisko, login')->where('login', $login)->limit(1)->get($datab);
         if($select->num_rows()>0) return $select->row_array();

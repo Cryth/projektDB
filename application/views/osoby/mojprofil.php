@@ -1,35 +1,32 @@
-<div class="container">
-    <h2>Váš profil</h2>
-    <form class="form-horizontal" action="updateprofil">
-        <div class="form-group">
-            <label class="control-label col-sm-4">Meno:</label>
-            <div class="col-sm-4">
-                <h3><?php echo $this->session->userdata('Meno'); ?></h3>
-            </div>
+<div class="col-md-6 offset-md-3">
+    <div class="card card-outline-secondary">
+        <div class="card-header">
+            <h3 class="mb-0"><span class="badge badge-primary">Váš profil</span></h3>
         </div>
-        <div class="form-group">
-            <label class="control-label col-sm-4">Priezvisko:</label>
-            <div class="col-sm-4">
-                <h3><?php echo $this->session->userdata('Priezvisko'); ?></h3>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-4" for="email">Email:</label>
-            <div class="col-sm-4">
-                <input type="email" class="form-control" id="email" placeholder="Zadaj email" required value="<?php echo $osoba['Email'];?>" name="email">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-4" for="telkontakt">Tel. kontakt:</label>
-            <div class="col-sm-4">
-                <input type="number" class="form-control" id="telkontakt" placeholder="Telefónne číslo" required value="<?php echo $osoba['TelKontakt'];?>" name="telkontakt">
-            </div>
-        </div>
+        <div class="card-body">
+            <form class="form" method="post" action="updateprofil" accept-charset="UTF-8">
 
-        <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-10">
-                <button type="submit" class="btn btn-primary">Uložiť</button>
-            </div>
+                <div class="form-group">
+                    <label for="meno">Meno</label>
+                    <input type="text" class="form-control" name="meno" id="meno" placeholder="Krstné meno" value="<?php echo $osoba['Meno'];?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="priezvisko">Priezvisko</label>
+                    <input type="text" class="form-control" name="priezvisko" id="priezvisko" placeholder="Priezvisko" value="<?php echo $osoba['Priezvisko'];?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Váš email" value="<?php echo $osoba['Email'];?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="telkontakt">Tel. kontakt</label>
+                    <input type="text" class="form-control" name="telkontakt" id="telkontakt" placeholder="Telefónne číslo" value="<?php echo $osoba['TelKontakt'];?>" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg float-right">Ulož</button>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>

@@ -7,7 +7,13 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <?php if ($this->session->userdata('lektor')){?>
-                    <a style="color: #f9f9f9" href="<?php echo base_url('Home')?>" class="btn btn-primary">Pridaj študenta</a>
+                        <a style="color: #f9f9f9" href="<?php echo base_url('Home')?>" class="btn btn-primary">Pridaj študenta</a>
+                    <?php };?>
+                    <?php if (!$this->session->userdata('lektor') && !empty($kurz) && !$makurz){?>
+                        <a style="color: #f9f9f9" href="<?php echo base_url().'kurz/prihlasenie/'.$kurz['idKurz'];?>" class="btn btn-primary">Prihlásiť sa na kurz</a>
+                    <?php };?>
+                    <?php if (!$this->session->userdata('lektor') && !empty($kurz) && $makurz){?>
+                        <a style="color: #f9f9f9" href="<?php echo base_url().'kurz/odhlasenie/'.$kurz['idKurz'];?>" class="btn btn-primary">Odhlásiť sa z kurzu</a>
                     <?php };?>
                 </div>
                 <div class="panel-body">

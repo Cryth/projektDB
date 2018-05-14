@@ -14,12 +14,12 @@ class Oblasti extends CI_Controller
         if (!$this->session->userdata('logged_in')){
             redirect('login');
         }
-        $this->load->model('oblasti_model');
+        $this->load->model('Oblasti_model');
         $this->load->helper('url_helper');
     }
 
     public function index(){
-        $data['oblasti'] = $this->oblasti_model->get_oblasti();
+        $data['oblasti'] = $this->Oblasti_model->get_oblasti();
         $data['title'] = 'Oblasť kurzov';
 
         $this->load->view('template/header', $data);
