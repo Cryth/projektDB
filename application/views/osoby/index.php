@@ -6,9 +6,6 @@
         <div class="row">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <?php if ($this->session->userdata('lektor')){?>
-                        <a style="color: #f9f9f9" href="<?php echo base_url('Home')?>" class="btn btn-primary">Pridaj študenta</a>
-                    <?php };?>
                     <?php if (!$this->session->userdata('lektor') && !empty($kurz) && !$makurz){?>
                         <a style="color: #f9f9f9" href="<?php echo base_url().'kurz/prihlasenie/'.$kurz['idKurz'];?>" class="btn btn-primary">Prihlásiť sa na kurz</a>
                     <?php };?>
@@ -39,9 +36,7 @@
                                 <td><?php echo $osobka['TelKontakt']; ?></td>
                                 <?php if ($this->session->userdata('lektor')){?>
                                 <td>
-                                    <a href="" >Detail</a>
-                                    <a href="" >Uprav</a>
-                                    <a href="" onclick="return confirm('Naozaj zmazať študenta?')">Zmaž</a>
+                                    <a href="<?php echo base_url().'osoby/detailstudenta/'.$osobka['idOsoby'];?>" >Detail</a>
                                 </td>
                                 <?php }; ?>
                             </tr>

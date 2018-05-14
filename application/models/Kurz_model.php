@@ -24,6 +24,18 @@ class Kurz_model extends CI_Model
             return $query->result_array();
         }
     }
+    public function get_stud_kurzy($id){
+        if(!empty($id)){
+            $data = array();
+            $idkurzov = $this->db->select('idKurz')->where('idOsoby', $id)->get('absolkurzy')->result_array();
+            foreach ($idkurzov as $kurz){
+                $prvok = $this->db->select('*')->where('idKurz', $kurz['idKurz'])->get('kurz')->row_array();
+                array_push($data, $prvok);
+            };
+            return $data;
+        }
+        return null;
+    }
 
     public function set_kurz($id = 0){
         $this->load->helper('url');
@@ -49,9 +61,11 @@ class Kurz_model extends CI_Model
         return $this->db->get('kurz')->result_array();
     }
 
-    public function mojekurzy(){
+
+
+    public function mojekurzy($id){
         $data = array();
-        $id = $this->session->userdata('idecko');
+
         if (!$this->session->userdata('lektor')){
             $idkurzov = $this->db->select('idKurz')->where('idOsoby', $id)->get('absolkurzy')->result_array();
             foreach ($idkurzov as $kurz){

@@ -44,8 +44,8 @@ class Kurz extends CI_Controller
     }
 
     public function moje_kurzy(){
-
-        $data['kurzy'] = $this->Kurz_model->mojekurzy();
+        $id = $this->session->userdata('idecko');
+        $data['kurzy'] = $this->Kurz_model->mojekurzy($id);
         if (empty($data['kurzy'])){
             redirect('Home');
         }
@@ -116,6 +116,7 @@ class Kurz extends CI_Controller
             $this->load->view('template/footer');
         }
     }
+
 
     public function show_kurz(){
         $id = $this->uri->segment(3);

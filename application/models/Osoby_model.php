@@ -38,7 +38,7 @@ class Osoby_model extends CI_Model
 
     public function get_zucastneni($id){
         if(!empty($id)){
-             $this->db->select('Meno, Priezvisko, TelKontakt, Email');
+             $this->db->select('*');
              $this->db->from('osoby');
              $this->db->join('absolkurzy', 'osoby.idOsoby = absolkurzy.idOsoby');
              $this->db->where('absolkurzy.idKurz', $id);

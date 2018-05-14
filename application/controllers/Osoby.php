@@ -15,6 +15,7 @@ class Osoby extends CI_Controller
             redirect('login');
         }
         $this->load->model('Osoby_model');
+        $this->load->model('Kurz_model');
         $this->load->helper('url_helper');
     }
 
@@ -52,6 +53,21 @@ class Osoby extends CI_Controller
         $this->load->view('template/navbar');
         $this->load->view('osoby/mojprofil', $data);
         $this->load->view('template/footer');
+    }
+
+    public function detailstudenta(){
+        $ido = $this->uri->segment(3);
+        if(empty($ido)){
+            show_404();
+        }
+        $data['kurzystudenta'] = $this->Kurz_model->get_stud_kurzy($ido);
+        $data['osoba'] = $this->Osoby_model->get_osoby($ido);
+
+        $this->load->view('template/header');
+        $this->load->view('template/navbar');
+        $this->load->view('osoby/detailstudenta', $data);
+        $this->load->view('template/footer');
+
     }
 
     public function updateprofil(){
