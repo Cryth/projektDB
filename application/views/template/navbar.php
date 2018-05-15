@@ -19,9 +19,12 @@
                 <a class="nav-link" href="<?php echo base_url().'kurz/spravakurzov';?>">Správa kurzov</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url().'oblasti/spravaoblasti';?>">Správa oblastí</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url().'auth/registerlektor'; ?>">Registrácia lektora</a>
             </li>
-            <?php }?>
+            <?php };?>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url().'logout' ?>">Odhlásenie</a>
             </li>

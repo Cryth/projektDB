@@ -23,7 +23,7 @@
                     <input type="date" class="form-control" name="datumdo" id="datumdo" placeholder="Zadajte koniec" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg float-right">Ulož</button>
+                    <button type="submit" class="btn btn-primary btn-lg float-right">Pridaj</button>
                 </div>
             </form>
         </div>

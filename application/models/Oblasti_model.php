@@ -36,6 +36,19 @@ class Oblasti_model extends CI_Model
         }
     }
 
+    public function insert_oblast($data){
+        if(!empty($data)){
+            return $this->db->insert('oblast', $data);
+        }
+        return null;
+    }
+
+    public function update_oblast($ido, $data){
+        if(!empty($ido) && !empty($data)){
+            $this->db->where('idOblast', $ido);
+            $this->db->update('oblast', $data);
+        }
+    }
 
     public function delete_oblasti($id){
         $this->db->where('idOblast', $id);

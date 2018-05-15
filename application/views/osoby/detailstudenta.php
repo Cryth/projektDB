@@ -45,7 +45,6 @@
                         <td>
                             <a href="<?php echo base_url().'kurz/zobraz_kurz/'.$kurz['idKurz'];?>" >Detail</a>
                             <a href="<?php echo base_url().'kurz/show_kurz/'.$kurz['idKurz'];?>" >Uprav</a>
-                            <a href="<?php echo base_url().'kurz/zmaz_kurz/'.$kurz['idKurz'];?>" onclick="return confirm('Naozaj zmazať kurz?')">Zmaž</a>
                         </td>
                     </tr>
                 <?php endforeach; else: ?>

@@ -58,14 +58,11 @@ class Kurz extends CI_Controller
     public function spravakurzov(){
         $id = $this->session->userdata('idecko');
         $data['kurzysprava'] = $this->Kurz_model->spravakurzov($id);
-        if (empty($data['kurzysprava'])){
-            redirect('Home');
-        }
+
         $this->load->view('template/header');
         $this->load->view('template/navbar');
         $this->load->view('kurz/spravakurzov', $data);
         $this->load->view('template/footer');
-
     }
 
     public function zmaz_kurz(){
